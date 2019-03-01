@@ -24,3 +24,5 @@ Explanation: The square root of 8 is 2.82842..., and since
 const sqrt = (num) => {
   
 }
+
+console.log(sqrt(10))
