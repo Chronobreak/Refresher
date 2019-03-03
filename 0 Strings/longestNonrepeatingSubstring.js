@@ -20,3 +20,29 @@ Output: 3
 Explanation: The answer is "wke", with the length of 3. 
               Note that the answer must be a substring, "pwke" is a subsequence and not a substring.
 */
+
+const longestNon = (string) => {
+  let longest = 0;
+  let interim = 0;
+  let memo = {};
+  for (let i = 0; i < string.length; i++) {
+    if (memo[string[i]]) {
+      if (interim > longest) {
+        longest = interim;
+      }
+      memo = {};
+      memo[string[i]] = 1;
+      interim = 0;
+    } else if (Object.keys(memo).length === string.length) {
+      
+    } else {
+      memo[string[i]] = 1;
+      interim++;
+      console.log(memo)
+    }
+  }
+  return longest;
+}
+
+// console.log(longestNon('abca'))
+console.log(longestNon('abc'))
