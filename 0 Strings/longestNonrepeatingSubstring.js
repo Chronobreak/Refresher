@@ -32,17 +32,19 @@ const longestNon = (string) => {
       }
       memo = {};
       memo[string[i]] = 1;
-      interim = 0;
-    } else if (Object.keys(memo).length === string.length) {
-      
+      interim = 1;
     } else {
       memo[string[i]] = 1;
       interim++;
-      console.log(memo)
+    }
+    if (i === string.length-1) {
+      if (interim > longest) {
+        longest = interim;
+      }
+      return longest;
     }
   }
-  return longest;
 }
 
 // console.log(longestNon('abca'))
-console.log(longestNon('abc'))
+console.log(longestNon('abcde'))
