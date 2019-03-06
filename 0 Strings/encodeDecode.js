@@ -20,13 +20,22 @@ const encode = (string) => {
 
 const decode = (string) => {
   let result = '';
-  // while string.length > 0
-    // get the number of times a string needs to be printed
-    // print string that many times and add to result
+  
+  let temp = 0;
+
+  for (let i = 0; i < string.length; i++) {
+    if (string.charCodeAt(i) >= 48 && string.charCodeAt(i) <= 57) {
+      temp = Number(string[i]);
+      while (temp > 0) {
+        result+=string.charAt(i+1)
+        temp--
+      }
+    }
+  }
 
   return result;
 }
 
 let test = 'aaaaabbcccccdeee'
-console.log("Should equal 5a2b5c1d3e: ", encode(test))
-// console.log("Should equal aaaaabbcccccdeee: ", decode(encode(test)));
+// console.log("Should equal 5a2b5c1d3e: ", encode(test))
+console.log("Should equal aaaaabbcccccdeee: ", decode(encode(test)));
