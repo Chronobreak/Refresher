@@ -12,10 +12,33 @@ Example 1:
 Input: [7,1,5,3,6,4]
 Output: 5
 Explanation: Buy on day 2 (price = 1) and sell on day 5 (price = 6), profit = 6-1 = 5.
-             Not 7-1 = 6, as selling price needs to be larger than buying price.
+              Not 7-1 = 6, as selling price needs to be larger than buying price.
 Example 2:
 
 Input: [7,6,4,3,1]
 Output: 0
 Explanation: In this case, no transaction is done, i.e. max profit = 0.
 */
+
+const stock = (array) => {
+  let min = Infinity
+  let minIndex = 0;
+  let max = -Infinity
+  for (let i = 0; i < array.length; i++) {
+    if (array[i] < min) {
+      min = array[i]
+      minIndex = i
+    }
+    if (array[i] > max) {
+      if (i > minIndex) {
+        max = array[i]
+      }
+    }
+  }
+  return ((max-min) >= 0) ? max-min : 0
+}
+
+let test = [7, 1, 5, 3, 6, 4]
+console.log("Should equal 5: ", stock(test));
+let test2 = [7, 6, 5, 4, 3, 2, 1]
+console.log("Should equal 0: ", stock(test2));
