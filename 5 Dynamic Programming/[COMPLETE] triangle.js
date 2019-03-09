@@ -20,21 +20,20 @@ Bonus point if you are able to do this using only O(n) extra space, where n is t
 
 const triangle = (tri) => {
   let sum = 0;
-  // for (let i = 0; i < tri.length; i++) {
-  //   sum+=tri[i];
-  //   if (tri[i+1]) {
-  //     sum+=Math.min(tri[i+1])
-  //   }
-  // }
   let i = 0;
   let index = 0;
   while (i < tri.length) {
     if (i === 0) {
-      sum+=tri[i]
-      index = i;
+      sum+=tri[i][index]
     }
-    else {
-      sum+=Math.min(tri[index], tri[index+1])
+    
+    if (tri[i+1]) {
+      if (tri[i+1][index] > tri[i+1][index+1]) {
+        sum+=tri[i+1][index+1]
+        index = index+1
+      } else if (tri[i+1][index] < tri[i+1][index+1]) {
+        sum+=tri[i+1][index]
+      }
     }
     i++
   }
