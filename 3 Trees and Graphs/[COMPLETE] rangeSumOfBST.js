@@ -17,6 +17,9 @@ Output: 23
 const rangesum = (bst, left, right) => {
   let sum = 0;
   let result = [];
+
+  // DFS to serialize tree into results array
+    // order doesn't matter because we will check against values
   const build = (node) => {
     result.push(node.val)
     if (node.left) {
@@ -26,13 +29,19 @@ const rangesum = (bst, left, right) => {
       build(node.right)
     }
   }
-  
+
+  // kick off recursive call
   build(bst);
 
+  // loop through results array
+    // add to sum if falls within range of left to right
   for (let i = 0; i < result.length; i++) {
     if ((result[i] >= left) && (result[i] <= right)) {
       sum+=result[i]
     }
   }
   return sum;
+
+  // time complexity O(2n) => O(n) where n is the number of nodes
 }
+
