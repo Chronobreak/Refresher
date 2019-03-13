@@ -23,9 +23,16 @@ Explanation: The square root of 8 is 2.82842..., and since
 
 const sqrt = (num) => {
   let root = 1;
-  while (root < (num/2)) {
-    if ((root*root) >= num) {
-      return root;
+
+  if (num === 0) {
+    return 0
+  }
+  if ((num === 1) || (num === 2)) {
+    return 1
+  }
+  while (root < num) {
+    if ((root*root) > num) {
+      return root-1;
     } else {
       root++;
     }
@@ -34,4 +41,7 @@ const sqrt = (num) => {
 
 console.log(sqrt(10))
 console.log(sqrt(16))
-console.log(sqrt(25))
+console.log(sqrt(0))
+console.log(sqrt(8));
+console.log(sqrt(1));
+console.log(sqrt(2));
