@@ -18,3 +18,26 @@ const search = (array, target, start, end) => {
 let test = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
 console.log(search(test, 5, 0, test.length-1))
 console.log(search(test, 13, 0, test.length-1))
+
+// Implement the iterative approach below
+
+const iterative = (array, target) => {
+  let start = 0;
+  let end = array.length-1;
+
+  while (start < end) {
+    let mid = Math.floor((start+end)/2)
+    if (array[mid] === target) {
+      return "Target " + target + " found at index " + mid + "."
+    } else if (array[mid] < target) {
+      start = mid+1;
+    } else if (array[mid] > target) {
+      end = mid;
+    }
+  }
+  return -1;
+}
+
+console.log(iterative(test, 5))
+console.log(iterative(test, 11))
+console.log(iterative(test, 15))
