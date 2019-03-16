@@ -46,5 +46,5 @@ const longestNon = (string) => {
   }
 }
 
-// console.log(longestNon('abca'))
+console.log(longestNon('abcabcdefg'))
 console.log(longestNon('abcde'))
