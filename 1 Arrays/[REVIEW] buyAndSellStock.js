@@ -20,25 +20,38 @@ Output: 0
 Explanation: In this case, no transaction is done, i.e. max profit = 0.
 */
 
-const stock = (array) => {
-  let min = Infinity
-  let minIndex = 0;
-  let max = -Infinity
-  for (let i = 0; i < array.length; i++) {
-    if (array[i] < min) {
-      min = array[i]
-      minIndex = i
-    }
-    if (array[i] > max) {
-      if (i > minIndex) {
-        max = array[i]
-      }
-    }
+// const stock = (array) => {
+//   let min = Infinity
+//   let minIndex = 0;
+//   let max = -Infinity
+//   for (let i = 0; i < array.length; i++) {
+//     if (array[i] < min) {
+//       min = array[i]
+//       minIndex = i
+//     }
+//     if (array[i] > max) {
+//       if (i > minIndex) {
+//         max = array[i]
+//       }
+//     }
+//   }
+//   return ((max-min) >= 0) ? max-min : 0
+// }
+var stock = function(prices) {
+  let result = 0;
+  let min = prices[0];
+  for(let i = 1; i < prices.length; i++) {
+      min = Math.min(prices[i], min);
+      result = Math.max(result, prices[i] - min);
   }
-  return ((max-min) >= 0) ? max-min : 0
-}
+  return result;
+};
 
 let test = [7, 1, 5, 3, 6, 4]
 console.log("Should equal 5: ", stock(test));
 let test2 = [7, 6, 5, 4, 3, 2, 1]
 console.log("Should equal 0: ", stock(test2));
+let test3 = [1, 4, 2, 8]
+console.log("Should equal 7: ", stock(test3));
+let test4 = [2, 4, 1]
+console.log("Should equal 2: ", stock(test4));
