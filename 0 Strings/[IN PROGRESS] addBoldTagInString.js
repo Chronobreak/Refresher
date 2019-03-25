@@ -18,7 +18,13 @@ Output:
 */
 
 const wrap = (string, dict) => {
-
+  let result = ''
+  for (let i = 0; i < dict.length; i++) {
+    if (string.indexOf(dict[i]) >= 0) {
+      result+='<b>'+dict[i]+'</b>'
+    }
+  }
+return result;
 }
 
 let test = "abcxyz123"
@@ -28,3 +34,5 @@ console.log("Should output <b>abc</b>xyz<b>123</b>: ", wrap(test, testd))
 let test2 = "aaabbcc"
 let testd2 = ['aaa', 'aab', 'bc']
 console.log("Should output <b>aaabbc</b>c: ", wrap(test2, testd2));
+
+console.log(test.indexOf(testd[1]))
