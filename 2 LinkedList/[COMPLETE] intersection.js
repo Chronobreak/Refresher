@@ -21,11 +21,11 @@
 
   const intersection = (one, two) => {
     let hash = {}
-    while (one !== null) {
+    while (one) {
       hash[one.val] = 1
       one = one.next
     }
-    while (two !== null) {
+    while (two) {
       if (hash[two.val]) {
         return two.val
       }
