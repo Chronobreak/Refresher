@@ -38,13 +38,13 @@ Explanation: In this case, no transaction is done, i.e. max profit = 0.
 //   return ((max-min) >= 0) ? max-min : 0
 // }
 var stock = function(prices) {
-  let result = 0;
+  let profit = 0;
   let min = prices[0];
   for(let i = 1; i < prices.length; i++) {
       min = Math.min(prices[i], min);
-      result = Math.max(result, prices[i] - min);
+      profit = Math.max(profit, prices[i] - min);
   }
-  return result;
+  return profit;
 };
 
 let test = [7, 1, 5, 3, 6, 4]
