@@ -19,12 +19,12 @@ const merge = (array) => {
   array.sort((a, b) => a - b)
   let curr = array[0]
   let res = [curr]
-  for (var interval of array) {
-    if (curr[1] >= interval[0]) {
-      curr[1] = Math.max(curr[1], interval[1])
+  for (var i of array) {
+    if (curr[1] >= i[0]) {
+      curr[1] = Math.max(curr[1], i[1])
     } else {
-      res.push(interval)
-      curr = interval
+      res.push(i)
+      curr = i
     }
   }
   return res;
